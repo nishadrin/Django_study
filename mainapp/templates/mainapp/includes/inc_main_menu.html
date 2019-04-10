@@ -1,0 +1,13 @@
+{% load static %}
+<div class="header">
+  <span class="logo">
+    <a href="{% url 'main' %}"><img class="img_logo" src="{% static 'img/hit.jpg' %}"  alt="Лого"></a>
+  </span>
+  <div class="menu">
+    <ul class="header_ul">
+      <li><a class="header_a" href="{% url 'main' %}">Главная</a></li>
+      <li><a class="header_a" href="{% url 'products' %}">Каталог</a></li>
+      <li><a class="header_a" href="{% url 'contact' %}">Контакты</a></li>
+    </ul>
+  </div>
+</div>
