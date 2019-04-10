@@ -1,0 +1,247 @@
+/*Общее*/
+/*
+* {
+  height: 0;
+  weight: 0;
+}
+*/
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+.header {
+  background-image: url(https://deniliquinchamber.com.au/wp-content/uploads/2017/04/header-image-1.png);
+  border-bottom: 1px solid green;
+  display: flex;
+  height: 100px;
+  justify-content: space-between;
+  position: relative;
+}
+.logo {
+  position: absolute;
+  top: 15px;
+  left: 30px;
+}
+.menu {
+  align-items: flex-end;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+.content {
+  position: relative;
+}
+/*Меню*/
+body {
+  background: #f8f8f8;
+  font-family: Times, serif;
+}
+.img_logo {
+  width: 85px;
+}
+.header_a {
+  font-family: Times, serif;
+  color: green;
+  font-size: 18px;
+  font-style: italic;
+  text-decoration: none;
+  padding-right: 10px;
+}
+.header_a:visited {
+  color: green;
+}
+.header_a:active {
+  color: green;
+}
+.header_a:hover {
+  color: purple;
+}
+.header_ul{
+  list-style-type: none;
+  display: flex;
+  position: right;
+}
+/*Товар*/
+.headers{
+  color: black;
+  font-size: 18px;
+  font-weight: 400;
+  background: #eaeaea;
+}
+.picture_ver, .picture_gor {
+  border: 2px solid lightgreen;
+  border-radius: 8px;
+}
+.picture_gor {
+  width: 189px;
+}
+.picture_gor:hover {
+  border: 2px solid transparent;
+}
+.picture_ver {
+  width: 505px;
+}
+.picture_ver:hover {
+  border: 2px solid transparent;
+}
+.shortDescription {
+  color: #707070;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 16px;
+}
+.shortDescription:first-letter {
+  font-size: 30px;
+}
+.description {
+  color: #484343;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+}
+.descriptional_list {
+  list-style-image: url(/static/img/list_photo-resizer.ru.png);
+  color: blue;
+  font-style: italic;
+  font-size: 20px;
+}
+.catalog_list {
+  list-style-type: none;
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+}
+.catalog_picture_gor, .catalog_picture_ver {
+  border-radius: 15px;
+  border: 2px solid lightgreen;
+}
+.catalog_picture_gor {
+  width: 80px;
+}
+.catalog_photo {
+  position: relative;
+}
+.sale:after {
+  text-decoration: none;
+  content: "Sale";
+  color:white;
+  line-height: 30px;
+  text-transform: uppercase;
+  display: block;
+  background-color: darkred;
+  width: 45px;
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.catalog_picture_ver {
+  width: 170px;
+}
+.table_descriptional_list_column1 {
+  text-align: right;
+}
+.table_descriptional_list_column2 {
+  text-align: left;
+}
+/*Контакты*/
+.form_input {
+  width: 65%;
+  font-weight: 500;
+  font-size: 16px;
+  font-style: italic;
+  border-radius: 8px;
+  padding: 5px;
+}
+.contact_form_textarea {
+  font-weight: 500;
+  font-size: 16px;
+  font-style: italic;
+  border-radius: 8px;
+  padding: 5px;
+  width: 99%;
+  height:200px;
+  resize: none;
+  text-transform: capitalize;
+}
+.contact_buttons {
+  border-radius: 8px;
+  background: white;
+  padding: 5px;
+  height: 40px;
+  width: 120px;
+}
+.form {
+  background: lightgreen;
+  color: black;
+  width: 30%;
+  padding: 2%;
+  border-radius: 15px;
+  float: right;
+}
+.input_email {
+  width: 65%;
+  font-weight: 500;
+  font-size: 16px;
+  font-style: italic;
+  color: lightblue;
+  border-radius: 8px;
+  padding: 5px;
+}
+.input_email:focus {
+  color: green;
+  background: lightgrey;
+}
+.picshortdesc {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+}
+.shortDesc {
+  float: right;
+  margin: 20px;
+}
+.contact_buttons:hover {
+  background-color:green;
+  color: white;
+}
+.contact_buttons:active {
+  background-color:purple;
+  color: white;
+}
+.buy_button {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+/*Футер*/
+.footer {
+  border-top: 1px solid green;
+  background-color: lightgrey;
+  /*clear:both;*/
+  height: 70px;
+  justify-content: space-between;
+  position: relative;
+}
+.copyright {
+  position: absolute;
+  top: 15px;
+  right: 100px;
+}
+.back_button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: block;
+  background: lightgreen;
+  color: black;
+  text-decoration: none;
+  padding: 4px 12px;
+  font-size: 17px;
+  border-radius: 15px;
+}
+.back_button:hover {
+  background: #222;
+  color: white;
+}

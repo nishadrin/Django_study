@@ -1,0 +1,53 @@
+<!--
+7) *Страница контактов:
+7.1) Ширина карты 100%;
+7.2) Высота карты 374px.
+8) * Добавить фоновые изображения для header на каждой странице.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Интернет магазин</title>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+      <span class="logo">
+        <a href="index.html"><img class="img_logo" src="static/img/hit.jpg"  alt="Лого"></a>
+      </span>
+        <div class="menu">
+          <ul class="header_ul">
+            <li><a class="header_a" href="/">Главная</a></li>
+            <li><a class="header_a" href="/products/">Каталог</a></li>
+            <li><a class="header_a" href="/contact/">Контакты</a></li>
+          </ul>
+        </div>
+    </div>
+    <div class="content">
+      <form class="form">
+        <legend><h2>Обратная связь:</h2></legend>
+        <p><input type="text" placeholder="Введите Ваше имя" size="50" class="form_input"> </p>
+        <p><input type="email" placeholder="Введи ваш Email" size="50" class="input_email"> </p>
+        <p>
+          <input type="text" placeholder="Напишите тему" size="50" class="form_input"><br>
+          <input type="checkbox" checked> Хочу получить информацию по акциям и скидкам!
+        </p>
+        <p><textarea placeholder="Введите комментарий" class="contact_form_textarea"></textarea></p>
+        <input type="submit" value="Отправить" class="contact_buttons">
+        <input type="reset" value="Очистить" class="contact_buttons">
+      </form>
+      <div>
+          <h3>Санкт-Петербург:</h3>
+          <p> Адрес: Ленина, д.1</p>
+          <p> Телефон: +7 (812) 1234567</p>
+          <p> E-mail: email@bestseller.ru </p>
+         <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af2ad791cebb7df1c5b3f7ca1e7fa27af3995bcaef48cad4db438bd2428d84f7a&amp;width=787&amp;height=418&amp;lang=ru_RU&amp;scroll=true"></script>
+    <div class="footer">
+      <div><a class="back_button" href="#">Наверх!</a></div>
+      <p class="copyright">Все права защищены&copy;</p>
+    </div>
+  </div>
+</body>
+</html>
