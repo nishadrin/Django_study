@@ -10,7 +10,7 @@
   margin: 0 auto;
 }
 .header {
-  background-image: url(https://deniliquinchamber.com.au/wp-content/uploads/2017/04/header-image-1.png);
+  background-image: url(/static/img/header-image-1.png);
   border-bottom: 1px solid green;
   display: flex;
   height: 100px;
