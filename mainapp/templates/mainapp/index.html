@@ -1,6 +1,22 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+
 {% block content %}
-  <h3>Приветствую Вас, посетитель нашего магазина "ХитПродаж"</h3>
-  <p>Не забудьте посмотреть <a href="{% url 'products' %}">каталог товаров</a></p>
+
+<h3>Приветствую Вас, посетитель нашего магазина "ХитПродаж"</h3>
+<p>Не забудьте посмотреть <a href="{% url 'products:index' %}">каталог товаров</a></p>
+{% for product in products %}
+  <div class="block">
+    <a href="#">
+      <img src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
+      <div class="text">
+        <h3>{{ product.category.name }}</h3>
+        <h4>{{ product.name }}</h4>
+        <p>{{ product.description }}</p>
+      </div>
+    </a>
+  </div>
+{% endfor %}
+
+
 {% endblock %}

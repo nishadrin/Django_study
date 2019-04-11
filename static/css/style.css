@@ -5,12 +5,20 @@
   weight: 0;
 }
 */
+.active_main_menu {
+  font-family: Times, serif;
+  color: red;
+  font-size: 18px;
+  font-style: italic;
+  text-decoration: none;
+  padding-right: 10px;
+}
 .container {
   width: 1200px;
   margin: 0 auto;
 }
 .header {
-  background-image: url(/static/img/header-image-1.png);
+  background-image: url(https://deniliquinchamber.com.au/wp-content/uploads/2017/04/header-image-1.png);
   border-bottom: 1px solid green;
   display: flex;
   height: 100px;

@@ -1,25 +1,36 @@
 from django.shortcuts import render
+from .models import ProductCategory, Product
 
-links_menu = [
-        {'href': 'products_all', 'name': 'все'},
-        {'href': 'products_home', 'name': 'дом'},
-        {'href': 'products_office', 'name': 'офис'},
-        {'href': 'products_modern', 'name': 'модерн'},
-        {'href': 'products_classic', 'name': 'классика'},
+links_main_menu = [
+{
+    'href': 'main', 'name': 'Главная'
+},
+{
+    'href': 'products:index', 'name': 'Каталог'
+},
+{
+    'href': 'contact', 'name': 'Контакты'
+}
 ]
 
 def main(request):
+    title = 'главная'
+    products = Product.objects.all()[:4]
+
     context = {
-        'title': "главная",
+        'title': title,
+        'links_main_menu': links_main_menu,
     }
 
     return render(request, 'mainapp/index.html', context)
 
 
-def products(request):
+def products(request, pk=None):
+    title = "продукты"
+
     context = {
-        'title': "продукты",
-        #'links_menu': links_menu,
+        'title': title,
+        'links_main_menu': links_main_menu,
         #'same_products': same_products
     }
 
@@ -27,8 +38,11 @@ def products(request):
 
 
 def contact(request):
+    title = "контакты"
+
     context = {
-        'title': "контакты",
+        'title': title,
+        'links_main_menu': links_main_menu,
     }
 
     return render(request, 'mainapp/contact.html', context)

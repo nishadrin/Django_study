@@ -1,13 +1,14 @@
 {% load static %}
+
 <div class="header">
   <span class="logo">
     <a href="{% url 'main' %}"><img class="img_logo" src="{% static 'img/hit.jpg' %}"  alt="Лого"></a>
   </span>
   <div class="menu">
     <ul class="header_ul">
-      <li><a class="header_a" href="{% url 'main' %}">Главная</a></li>
-      <li><a class="header_a" href="{% url 'products' %}">Каталог</a></li>
-      <li><a class="header_a" href="{% url 'contact' %}">Контакты</a></li>
+      {% for item in links_main_menu %}
+        <li><a class="{% if request.resolver_match.view_name == item.href %}active_main_menu{% else %}header_a{% endif %}" href="{% url item.href %}">{{ item.name }}</a></li>
+      {% endfor %}
     </ul>
   </div>
 </div>
