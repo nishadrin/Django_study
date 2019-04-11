@@ -6,9 +6,38 @@
   </span>
   <div class="menu">
     <ul class="header_ul">
+      <li>
+
+        {% if user_name.is_authenticated %}
+
+          <a href="#" class="header_a">
+
+            {{ user_name|default:'Пользователь'|title }}
+
+          </a>
+
+          <br>
+
+          <a href="{%url 'auth:logout' %}" class="header_a">Выйти</a>
+          <br>
+          <a href="{%url 'auth:edit' %}" class="header_a">Изменить</a>
+
+        {% else %}
+
+          <a href="{%url 'auth:register' %}" class="header_a">Регистрация</a>
+          <br>
+          <a href="{%url 'auth:login' %}" class="header_a">Войти</a>
+
+        {% endif %}
+
+      </li>
+
       {% for item in links_main_menu %}
+
         <li><a class="{% if request.resolver_match.view_name == item.href %}active_main_menu{% else %}header_a{% endif %}" href="{% url item.href %}">{{ item.name }}</a></li>
+
       {% endfor %}
+
     </ul>
   </div>
 </div>

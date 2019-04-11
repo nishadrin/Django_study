@@ -4,7 +4,7 @@
 {% block content %}
 
 <h3>Приветствую Вас, посетитель нашего магазина "ХитПродаж"</h3>
-<p>Не забудьте посмотреть <a href="{% url 'products:index' %}">каталог товаров</a></p>
+<p>Не забудьте посмотреть <a href="{% url links_main_menu.1.href %}">каталог товаров</a></p>
 {% for product in products %}
   <div class="block">
     <a href="#">

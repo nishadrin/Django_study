@@ -1,0 +1,38 @@
+[
+  {
+    "category": "Наушники",
+    "name": "JBL E25BT",
+    "price": 1500,
+    "quantity": 10
+  },
+  {
+    "category": "Наушники",
+    "name": "JBL T110",
+    "price": 1700,
+    "quantity": 12
+  },
+  {
+    "category": "Наушники",
+    "name": "JBL T210",
+    "price": 2000,
+    "quantity": 15
+  },
+  {
+    "category": "Микрофоны",
+    "name": "AUDIO-TECHNICA MB4k",
+    "price": 3000,
+    "quantity": 20
+  },
+  {
+    "category": "Микрофоны",
+    "name": "SONY F-V320",
+    "price": 4000,
+    "quantity": 11
+  },
+  {
+    "category": "Микрофоны",
+    "name": "PIONEER DM-DV20",
+    "price": 5000,
+    "quantity": 14
+  }
+]
