@@ -1,28 +1,19 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 
+{% block title %}
+    <title>Продукты</title>
+{% endblock %}
+
 {% block content %}
 
-  <h3>Каталог:</h3>
+  <h3>Категории:</h3>
   {% include 'mainapp/includes/inc_categories_menu.html' %}
-
-  <!-- <ul class="catalog_list">
-    <li class="catalog_li">
-      <div class="catalog_photo">
-        <a href="JBL T205BT.html"><img class="catalog_picture_gor" src="{% static 'img/JBL T205BT.jpg' %}" alt="Гарнитура JBL T205BT"> </a>
-      </div>
-      <div class="catalog_text">
-        <a href="JBL T205BT.html">Гарнитура JBL T205BT</a>
-      </div>
-    </li>
-    <li class="catalog_li">
-      <div class="catalog_photo sale">
-        <a href="JBL E25BT BLK.html"><img class="catalog_picture_ver" src="{% static 'img/JBL E25BT BLK.jpg' %}" alt="JBL E25BT BLK"> </a>
-      </div>
-      <div class="catalog_text">
-        <a href="JBL E25BT BLK.html">Гарнитура JBL E25BT BLK</a>
-      </div>
-    </li>
-  </ul> -->
+  {% for product in same_products %}
+        <div>{{ product.name }} ({{ product.category.name }})</div>
+        {% if product.image %}
+            <img src={{ product.image.url }} />
+        {% endif %}
+    {% endfor %}
 
 {% endblock %}
