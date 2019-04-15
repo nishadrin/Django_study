@@ -13,7 +13,7 @@
         {% for product in products %}
 
           <div class="block">
-            <a href="{% url 'basket:add' product.pk %}">
+            <a href="{% url 'products:product' product.pk %}">
             <img src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
             <div class="text">
              <img src="{% static 'img/icon-hover.png' %}" alt="hover">
@@ -24,7 +24,7 @@
                 {% endif %}
               {% endfor %}
              <p>{{ product.description }}</p>
-             <a href="{% url 'basket:add' product.pk %}">Добавить в корзину</a>
+             <a href="{% url 'products:product' product.pk %}">Добавить в корзину</a>
              <br>
              <a href="{% url 'basket:remove' product.pk %}">Удалить из корзины</a>
             </div>
