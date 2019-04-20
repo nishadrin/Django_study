@@ -5,6 +5,9 @@
   weight: 0;
 }
 */
+.not_active {
+  opacity: 0.5;
+}
 .active_main_menu {
   font-family: Times, serif;
   color: red;
