@@ -1,0 +1,11 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Verify
+From: django@geekshop.local
+To: testtest22@testtest.ru
+Date: Sat, 29 Jun 2019 19:47:08 -0000
+Message-ID: <156183762896.23990.12029666158715886469@nick-elementary>
+
+Для подтверждения перейдите по ссылке http://localhost:8000/auth/verify/testtest22@testtest.ru/9a88e5c78774d963e90433cad206aa047649c57c/
+-------------------------------------------------------------------------------

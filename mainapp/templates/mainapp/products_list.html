@@ -1,0 +1,42 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h3>Категории:</h3>
+ {% include 'mainapp/includes/inc_categories_menu.html' %}
+
+
+    <div class="products_list">
+      <div class="category-products clearfix">
+
+        {% for product in products %}
+
+          <div class="block">
+            <a href="{% url 'products:product' product.pk %}">
+            <img src="/media/products_images/{{ product.image }}" alt="{{ product.short_desc }}">
+            <div class="text">
+             <img src="{% static 'img/icon-hover.png' %}" alt="hover">
+             <h4>{{ product.name }}</h4>
+             {% for item in basket %}
+               {% if item.product == product %}
+                 <div>{{ item.quantity }}</div>
+                {% endif %}
+              {% endfor %}
+             <p>{{ product.description }}</p>
+             <a href="{% url 'products:product' product.pk %}">Добавить в корзину</a>
+             <br>
+             <a href="{% url 'basket:remove' product.pk %}">Удалить из корзины</a>
+            </div>
+            </a>
+          </div>
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+  <div class="clr"></div>
+
+{% endblock %}

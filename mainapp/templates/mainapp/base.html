@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>
+
+    {% block title %}
+      Интернет магазин|{{ title|title }}
+    {% endblock %}
+
+  </title>
+
+  {% block css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+
+  {% endblock %}
+
+
+</head>
+  <body>
+    <div class="container">
+
+      {% block menu %}
+        {% include 'mainapp/includes/inc_main_menu.html' %}
+      {% endblock %}
+
+      <div class="content">
+        {% block content %}
+
+        {% endblock %}
+      </div>
+
+      {% block footer %}
+
+        <div class="footer">
+          <div><a class="back_button" href="#">Наверх!</a></div>
+          <p class="copyright">Все права защищены&copy;</p>
+        </div>
+
+      {% endblock %}
+      
+      {% block js %}
+
+      {% endblock %}
+    </div>
+  </body>
+</html>

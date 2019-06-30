@@ -1,0 +1,72 @@
+{% load static %}
+
+<div class="header">
+  <span class="logo">
+    <a href="{% url 'main' %}"><img class="img_logo" src="{% static 'img/hit.jpg' %}"  alt="Лого"></a>
+  </span>
+  <div class="menu">
+    <ul class="header_ul">
+
+  {% if user.is_authenticated %}
+
+    <li>
+      <a href="{% url 'auth:edit' %}"
+             class="{% if request.resolver_match.url_name == 'categories' or category.name %}
+                      active_main_menu{% else %}header_a
+                    {% endif %}">
+
+        {{ user.first_name|default:'Пользователь' }}
+
+      </a>
+    </li>
+
+  {% endif %}
+
+  {% if user.is_superuser %}
+
+    <li>
+      <a href="{% url 'admin:users' %}"
+             class="{% if request.resolver_match.url_name == 'categories' or category.name %}
+                      active_main_menu{% else %}header_a
+                    {% endif %}">админка</a>
+    </li>
+
+  {% endif %}
+
+  <li>
+
+    {% if user.is_authenticated %}
+
+      <a href="{% url 'auth:logout' %}">выйти</a>
+
+    {% else %}
+
+      <a href="{% url 'auth:login' %}">войти</a>
+
+    {% endif %}
+
+  </li>
+
+      {% for item in links_main_menu %}
+
+        <li><a class="{% if request.resolver_match.view_name == item.href %}active_main_menu{% else %}header_a{% endif %}" href="{% url item.href %}">{{ item.name }}</a></li>
+
+      {% endfor %}
+
+    </ul>
+  </div>
+  <a href="#" class="search"></a>
+  <a href="{% url 'basket:view' %}" class="header_a">
+  <span>
+
+    {% if basket %}
+
+      {{ basket.0.total_cost|floatformat:0 }} руб
+
+      ({{ basket.0.total_quantity }} шт)
+
+    {% endif %}
+
+  </span>
+  </a>
+</div>

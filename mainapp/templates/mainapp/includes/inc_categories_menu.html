@@ -1,0 +1,45 @@
+<ul class="links-menu">
+  <li>
+    <a href="{% url 'products:index' %}"
+       class="{% if request.resolver_match.view_name == 'products:index' %}
+                active_main_menu
+              {% else %}
+                header_a
+              {% endif %}">
+
+      Категории
+
+    </a>
+  </li>
+
+  <li>
+    <a href="{% url 'products:category' 0 %}"
+       class="{% if request.resolver_match.kwargs.pk == 0 %}
+                active_main_menu
+              {% else %}
+                header_a
+              {% endif %}">
+
+      Все
+
+    </a>
+  </li>
+
+  {% for link in links_menu %}
+
+    <li>
+      <a href="{% url 'products:category' link.pk %}"
+         class="{% if request.resolver_match.kwargs.pk|add:'0' == link.pk %}
+                  active_main_menu
+                {% else %}
+                  header_a
+                {% endif %}">
+
+        {{ link.name }}
+
+      </a>
+    </li>
+
+  {% endfor %}
+
+</ul>

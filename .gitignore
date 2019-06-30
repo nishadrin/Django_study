@@ -1,3 +1,7 @@
 *.pyc
 .idea
 *.sqlite3
+migrate.sh
+run.sh
+/media
+django_my_command_file.py
