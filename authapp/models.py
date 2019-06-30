@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-# Create your models here.
+from django.utils.timezone import now
+from datetime import timedelta
 
 class ShopUser(AbstractUser):
     class Meta:
@@ -9,3 +10,9 @@ class ShopUser(AbstractUser):
 
     avatar = models.ImageField(upload_to='users_avatars', blank=True)
     age = models.PositiveIntegerField(verbose_name = 'возраст')
+    activation_key = models.CharField(max_length=128, blank=True)
+    activation_key_expires = models.DateTimeField(default=(now() + timedelta(hours=48)))
+    email = models.EmailField(unique=True)
+
+    def is_activation_key_expired(self):
+        return now() > self.activation_key_expires
