@@ -53,6 +53,7 @@ class ProductCategoryDeleteView(DeleteView):
     success_url = reverse_lazy('admin:categories')
 
     def get_context_data(self, **kwargs):
+
         context = super().get_context_data(**kwargs)
         context['title'] = 'категории/удаление'
 
@@ -70,12 +71,17 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'adminapp/product_read.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        title = 'продукт/подробнее'
-        product = get_object_or_404(Product, pk=pk)
-        context = {'title': title, 'object': product}
 
+    def get(self, request, *args, **kwargs):
+        print('kwargs: ', kwargs)
+        pk = kwargs['pk']
+        return super().get(request, *args, **kwargs)
+
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'продукт/подробнее'
+        context['object'] = get_object_or_404(Product, pk=self.kwargs.get('pk'))
         return context
 
 
@@ -83,7 +89,7 @@ class ProductDetailView(DetailView):
 def product_read(request, pk):
     title = 'продукт/подробнее'
     product = get_object_or_404(Product, pk=pk)
-    content = {'title': title, 'object': product,}
+    content = {'title': title, 'object': product}
 
     return render(request, 'adminapp/product_read.html', content)
 
