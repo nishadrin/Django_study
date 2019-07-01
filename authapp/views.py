@@ -2,6 +2,8 @@ from django.shortcuts import render, HttpResponseRedirect
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
 from django.contrib import auth
 from django.urls import reverse
+from django.db import transaction
+from authapp.forms import ShopUserProfileEditForm
 # почта
 from django.core.mail import send_mail
 from django.conf import settings
@@ -26,7 +28,7 @@ def login(request):
 
         user = auth.authenticate(username=username, password=password)
         if user and user.is_active:
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             if 'next' in request.POST.keys():
                 return HttpResponseRedirect(request.POST['next'])
             else:
@@ -46,20 +48,24 @@ def logout(request):
     return HttpResponseRedirect(reverse('main'))
 
 
+@transaction.atomic
 def edit(request):
     title = 'редактирование'
 
     if request.method == 'POST':
         edit_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
-        if edit_form.is_valid():
+        profile_form = ShopUserProfileEditForm(request.POST, instance=request.user.shopuserprofile)
+
+        if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
-            return HttpResponseRedirect(reverse('main'))
+
+            return HttpResponseRedirect(reverse('auth:edit'))
     else:
         edit_form = ShopUserEditForm(instance=request.user)
+        profile_form = ShopUserProfileEditForm(instance=request.user.shopuserprofile)
+        content = {'title': title, 'edit_form': edit_form, 'profile_form': profile_form}
 
-    context = {'title': title, 'edit_form': edit_form}
-
-    return render(request, 'authapp/edit.html', context)
+        return render(request, 'authapp/edit.html', content)
 
 
 def register(request):
@@ -72,7 +78,7 @@ def register(request):
             user = register_form.save()
             if send_verify_mail(user):
                 print('Удачно отправили')
-                auth.login(request, user)
+                auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 return HttpResponseRedirect(reverse('auth:login'))
             else:
                 print('Ошибка отправки письмо')
@@ -93,11 +99,10 @@ def verify(request, email, activation_key):
             print(f'user {user} is activated')
             user.is_active = True
             user.save()
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
             return render(request, 'authapp/verification.html')
         else:
-            print(f'error activation user: {user} Here')
             return render(request, 'authapp/verification.html')
 
     except Exception as e:
