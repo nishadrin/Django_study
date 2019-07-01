@@ -58,6 +58,7 @@ def basket_add(request, pk):
 
     if not basket:
         basket = Basket(user=request.user, product=product)
+        basket.quantity = 0
 
     basket.quantity += 1
     basket.save()
