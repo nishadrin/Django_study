@@ -93,20 +93,16 @@ def register(request):
 
 
 def verify(request, email, activation_key):
-    print("verify")
     try:
         user = ShopUser.objects.get(email=email)
-        print("here")
         if user.activation_key == activation_key and not user.is_activation_key_expired():
-            print("here2")
-            print(f'user {user} is activated')
             user.is_active = True
             user.save()
             auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
             return render(request, 'authapp/verification.html')
         else:
-            print("here3")
+            
             return render(request, 'authapp/verification.html')
 
     except Exception as e:

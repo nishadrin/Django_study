@@ -14,11 +14,14 @@ class ShopUser(AbstractUser):
     avatar = models.ImageField(upload_to='users_avatars', blank=True)
     age = models.PositiveIntegerField(verbose_name = 'возраст', default=18)
     activation_key = models.CharField(max_length=128, blank=True)
-    activation_key_expires = models.DateTimeField(default=(now() + timedelta(hours=48)))
+    activation_key_expires = models.DateTimeField(verbose_name = 'актуальность ключа', default=(now() + timedelta(hours=48)))
     email = models.EmailField(unique=True)
 
     def is_activation_key_expired(self):
-        return now() > self.activation_key_expires
+        if now() <= self.activation_key_expires:
+            return False
+        else:
+            return True
 
 
 class ShopUserProfile(models.Model):
@@ -39,5 +42,3 @@ class ShopUserProfile(models.Model):
     @receiver(post_save, sender=ShopUser)
     def save_user_profile(sender, instance, **kwargs):
         instance.shopuserprofile.save()
-
-        
