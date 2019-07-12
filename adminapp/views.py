@@ -72,12 +72,6 @@ class ProductDetailView(DetailView):
     template_name = 'adminapp/product_read.html'
 
 
-    def get(self, request, *args, **kwargs):
-        print('kwargs: ', kwargs)
-        pk = kwargs['pk']
-        return super().get(request, *args, **kwargs)
-
-
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'продукт/подробнее'

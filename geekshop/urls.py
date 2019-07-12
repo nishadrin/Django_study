@@ -15,6 +15,7 @@ Including another URLconf
 """
 import mainapp.views as mainapp
 import authapp.views as authapp
+import ordersapp.views as ordersapp
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
@@ -30,6 +31,7 @@ urlpatterns = [
     path('contact/', mainapp.contact, name='contact'),
     path('admin/', include('adminapp.urls', namespace='admin')),
     path('', include('social_django.urls', namespace='social')),
+    path('order/', include('ordersapp.urls', namespace='order')),
 ]
 
 if settings.DEBUG:
