@@ -1,31 +1,15 @@
-{% extends 'adminapp/base.html' %}
+{% extends 'authapp/base.html' %}
 {% load staticfiles %}
 
 {% block content %}
-  <div class="product_read">
-    <div class="product_name">
-      Продукт<strong>{{ object.category.name|title }} /
-                        {{ object.name|title }}</strong>
-    </div>
-    <img src="/media/{{ object.image|default:'products_images/default.jpg'}}" alt="{{ object.name }}">
-    <div class="summary">
-      <b>цена</b>
-      <p>{{ object.price }} руб</p>
-      <b>количество</b>
-      <p>{{ object.quantity }}</p>
-      <b>в каталоге</b>
-      <p>{% if object.is_active %}да{% else %}нет{% endif %}</p>
-      <p><button><a href={% url 'admin:product_update' object.pk %}>редактировать</a></button></p>
-      <p><button><a href={% url 'admin:product_delete' object.pk %}>удалить</a></button></p>
-      <p><button><a href={% url 'admin:products' object.category.pk %}>назад</a></button></p>
-    </div>
-    <div class="product_desc">
-      <b>краткая информация</b>
-      <p>{{ object.short_desc }}</p>
-      <br><br>
-      <b>подробная информация</b>
-      <p>{{ object.description }}</p>
-    </div>
-  </div>
-
+  <form class="form-horizontal" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ update_form.as_p }}
+    <input class="form-control" type="submit" value="сохранить">
+  </form>
+  <button class="btn btn-round form-control last">
+    <a href="{% url 'admin:categories' %}">
+      к списку продуктов
+    </a>
+  </button>
 {% endblock %}
