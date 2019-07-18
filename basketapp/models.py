@@ -56,8 +56,8 @@ class Basket(models.Model):
         _totalcost = sum(list(map(lambda x: x.product_cost, _items)))
         return _totalcost
 
-        def __str__(self):
-            return self.user.username + " " + self.product.name
+    def __str__(self):
+        return self.user.username + " " + self.product.name
 
 
     @staticmethod

@@ -5,4 +5,4 @@ migrate.sh
 run.sh
 /media
 django_my_command_file.py
-vk.json
+*.json
