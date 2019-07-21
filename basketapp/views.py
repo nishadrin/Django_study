@@ -20,8 +20,7 @@ def basket_edit(request, pk, quantity):
         else:
             new_basket_item.delete()
 
-        basket_items = Basket.objects.filter(user=request.user).\
-                                      order_by('product__category')
+        basket_items = Basket.objects.filter(user=request.user).order_by('product__category').select_related("product")
 
         content = {
             'basket_items': basket_items,
@@ -36,7 +35,7 @@ def basket_edit(request, pk, quantity):
 def basket(request):
     title = 'корзина'
     user_name = request.user
-    basket_items = Basket.objects.filter(user=request.user).order_by('product__category')
+    basket_items = Basket.objects.filter(user=request.user).order_by('product__category').select_related("product")
 
     context = {
         'title': title,

@@ -9,6 +9,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 from authapp.models import ShopUser
 
+from django.contrib.auth.decorators import login_required
+
 
 def send_verify_mail(user):
     link = reverse('auth:verify', kwargs={'email': user.email, 'activation_key': user.activation_key})
@@ -47,7 +49,7 @@ def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('main'))
 
-
+@login_required
 @transaction.atomic
 def edit(request):
     title = 'редактирование'
