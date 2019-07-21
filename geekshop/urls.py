@@ -15,12 +15,15 @@ Including another URLconf
 """
 import mainapp.views as mainapp
 import authapp.views as authapp
+import ordersapp.views as ordersapp
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from django.conf.urls import include
 
 from django.conf import settings
 from django.conf.urls.static import static
+
+import debug_toolbar
 
 urlpatterns = [
     path('', mainapp.main, name='main'),
@@ -28,9 +31,11 @@ urlpatterns = [
     path('auth/', include('authapp.urls', namespace='auth')),
     path('products/', include('mainapp.urls', namespace='products')),
     path('contact/', mainapp.contact, name='contact'),
-    path('admin/', include('adminapp.urls', namespace='admin'))
-    # path('admin/', admin.site.urls),
+    path('admin/', include('adminapp.urls', namespace='admin')),
+    path('', include('social_django.urls', namespace='social')),
+    path('order/', include('ordersapp.urls', namespace='order')),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    urlpatterns += path('__debug__/', include(debug_toolbar.urls)),
