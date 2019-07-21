@@ -44,7 +44,7 @@ class Basket(models.Model):
 
     @cached_property
     def get_items_cached(self):
-        return Basket.objects.filter(user=self.user)
+        return Basket.objects.filter(user=self.user).select_related()
 
 
     @property
