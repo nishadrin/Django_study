@@ -11,8 +11,6 @@ from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
 from django.http import JsonResponse
 
-from django.views.decorators.cache import never_cache
-
 JSON_PATH = 'mainapp/json'
 
 links_main_menu = [
@@ -131,7 +129,7 @@ def get_same_products(hot_product):
 
     return same_products
 
-
+@cache_page(3600)
 def products(request, pk=None, page=1):
     title = "продукты"
     links_menu = get_links_menu()
@@ -203,14 +201,14 @@ def contact(request):
     title = "контакты"
     user_name = request.user
 
-    # if settings.LOW_CACHE:
-    #     key = f'locations'
-    #     locations = cache.get(key)
-    #     if locations is None:
-    #         locations = load_from_json('contact__locations')
-    #         cache.set(key, locations)
-    # else:
-    #     locations = load_from_json('contact__locations')
+    if settings.LOW_CACHE:
+        key = f'locations'
+        locations = cache.get(key)
+        if locations is None:
+            locations = load_from_json('contact__locations')
+            cache.set(key, locations)
+    else:
+        locations = load_from_json('contact__locations')
 
     context = {
         'title': title,
@@ -220,6 +218,11 @@ def contact(request):
     }
 
     return render(request, 'mainapp/contact.html', context)
+
+
+def load_from_json(file_name):
+    with open(os.path.join(JSON_PATH, file_name + '.json'), 'r', errors='ignore') as infile:
+        return json.load(infile)
 
 
 def products_ajax(request, pk=None, page=1):
@@ -254,8 +257,3 @@ def products_ajax(request, pk=None, page=1):
             result = render_to_string('mainapp/includes/inc_products_list_content.html', context=content, request=request)
 
             return JsonResponse({'result': result})
-
-
-# def load_from_json(file_name):
-#     with open(os.path.join(JSON_PATH, file_name + '.json'), 'r', errors='ignore') as infile:
-#         return json.load(infile)
