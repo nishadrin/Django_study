@@ -1,0 +1,16 @@
+http://127.0.0.1:8000/
+http://127.0.0.1:8000/products/
+http://127.0.0.1:8000/contact/
+http://127.0.0.1:8000/products/category/6/
+http://127.0.0.1:8000/products/category/0/
+http://127.0.0.1:8000/products/category/5/
+http://127.0.0.1:8000/products/product/10/
+http://127.0.0.1:8000/products/product/12/
+http://127.0.0.1:8000/products/product/7/
+http://127.0.0.1:8000/products/product/11/
+http://127.0.0.1:8000/products/product/8/
+http://127.0.0.1:8000/products/product/9/
+http://127.0.0.1:8000/basket/
+http://127.0.0.1:8000/order/
+http://127.0.0.1:8000/auth/edit/
+http://127.0.0.1:8000/order/update/8/
